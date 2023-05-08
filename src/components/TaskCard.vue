@@ -1,37 +1,30 @@
 <template>
-  <div class="mb-4">
+  <div class="mb-4 bg-white">
     <div
-      class="rounded shadow-sm border-2 h-56"
+      class="h-56 border-2 rounded shadow-sm"
       :class="[`border-${borderColor}`]"
     >
       <div class="flex justify-between">
-        <h3 class="text-sm mb-3 p-2 font-semibold text-gray-500">
+        <h3 class="p-2 mb-3 text-sm font-semibold text-gray-500">
           {{ task.title }}
         </h3>
 
-        <div class="flex p-2 gap-2">
-          <IconEdit />
-          <form @submit.prevent="deleteTask(task)">
-            <button class="py-2 px-1 hover:text-red-100"><IconTrash /></button>
-          </form>
+        <div class="flex gap-2 p-2">
+          <slot name="icons"></slot>
         </div>
       </div>
       <div class="flex flex-row items-center mt-2 mb-2">
-        <p class="overflow-y-auto text-sm text-light text-gray-600 p-4 h-32">
+        <p class="h-32 p-4 overflow-y-auto text-sm text-gray-600 text-light">
           {{ task.description }}
         </p>
       </div>
-      <p class="text-xs text-gray-500 mt-4 font-semibold">
+      <p class="mt-4 text-xs font-semibold text-gray-500">
         Due Date: {{ task.due_date }}
       </p>
     </div>
   </div>
 </template>
 <script>
-import store from '@/store';
-import IconEdit from './IconEdit.vue';
-import IconTrash from './IconTrash.vue';
-
 export default {
   name: "TaskCard",
   props: {
@@ -39,13 +32,5 @@ export default {
     borderColor: String,
     task: Object,
   },
-  components: {
-    IconEdit, IconTrash
-  },
-  methods: {
-    deleteTask: function(task) {
-      store.dispatch('task/delete', task);
-    }
-  }
 };
 </script>
