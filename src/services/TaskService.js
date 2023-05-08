@@ -12,5 +12,11 @@ export default {
     },
     async deleteTask(task) {
         return await Api.handle.delete(`v1/tasks/${task.id}`);
+    },
+    async updateTask(task) {
+        return await Api.handle.patch(`v1/tasks/${task.id}`, task.data);
+    },
+    async createTask(payload) {
+        return await Api.handle.post('v1/tasks', payload);
     }
 }

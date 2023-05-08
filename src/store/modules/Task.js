@@ -133,6 +133,26 @@ export const actions = {
         commit("SET_LOADING", false);
         commit("SET_ERROR", getError(err));
       });
+  },
+  update({ commit }, payload) {
+    TaskService.updateTask(payload)
+      .then((res) => {
+        commit('SET_TASK', res.data.data);
+      })
+      .catch((err) => {
+        commit("SET_LOADING", false);
+        commit("SET_ERROR", getError(err));
+      });
+  },
+  create({ commit }, payload) {
+    TaskService.createTask(payload)
+      .then((res) => {
+        commit('SET_TASK', res.data.data);
+      })
+      .catch((err) => {
+        commit("SET_LOADING", false);
+        commit("SET_ERROR", getError(err));
+      });
   }
 };
 
