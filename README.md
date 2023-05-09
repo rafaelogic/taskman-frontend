@@ -1,4 +1,5 @@
-# taskman-frontend
+# Taskman
+Taskman is a basic kanban board where you can do CRUD operations. It is an SPA where it uses vuex and vue-router. Here you can sort and drag and drop tasks into another status. 
 
 ## Project setup
 ```
